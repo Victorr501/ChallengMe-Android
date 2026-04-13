@@ -1,0 +1,24 @@
+# Gradle
+.gradle/
+build/
+**/build/
+
+# Android
+*.apk
+*.ap_
+*.aab
+local.properties
+
+# IntelliJ / Android Studio
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/assetWizardSettings.xml
+.idea/dictionaries
+.idea/libraries
+.idea/caches
+*.iml
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
