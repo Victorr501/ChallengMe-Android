@@ -1,4 +1,4 @@
-package com.example.challengme.ui.theme
+package com.example.challengme.res.values
 
 import androidx.compose.ui.graphics.Color
 

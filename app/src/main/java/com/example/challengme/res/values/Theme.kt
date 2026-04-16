@@ -1,6 +1,5 @@
-package com.example.challengme.ui.theme
+package com.example.challengme.res.values
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
