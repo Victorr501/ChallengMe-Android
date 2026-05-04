@@ -1,4 +1,4 @@
-package com.example.challengme.data.remote.services
+package com.example.challengme.data.services
 
 // ============================================================
 //  AuthRepository.kt
