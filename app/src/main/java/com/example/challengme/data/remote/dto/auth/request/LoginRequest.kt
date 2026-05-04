@@ -1,4 +1,4 @@
-package com.example.challengme.data.remote.dto.auth
+package com.example.challengme.data.remote.dto.auth.request
 
 import com.google.gson.annotations.SerializedName
 

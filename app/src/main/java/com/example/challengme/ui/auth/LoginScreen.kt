@@ -42,7 +42,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.challengme.data.remote.repository.AuthRepository
+import com.example.challengme.data.remote.services.AuthService
 import com.example.challengme.res.navigation.AuthRoutes
 import com.example.challengme.ui.res.values.LocalShapes
 import com.example.challengme.ui.res.values.LocalSpacing
@@ -181,7 +181,7 @@ fun LoginScreen(navController: NavController) {
                     isLoading    = true
                     errorMessage = null
                     try {
-                        AuthRepository.shared.loginEmail(email.trim(), password)
+                        AuthService.shared.loginEmail(email.trim(), password)
                         // Éxito → AuthManager.isAuthenticated = true
                         // MainNavGraph navega automáticamente a MainLayout
                     } catch (e: Exception) {

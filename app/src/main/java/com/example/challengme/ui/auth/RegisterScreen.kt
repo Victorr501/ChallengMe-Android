@@ -42,7 +42,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.challengme.data.remote.repository.AuthRepository
+import com.example.challengme.data.remote.services.AuthService
 import com.example.challengme.res.navigation.AuthRoutes
 import com.example.challengme.ui.res.values.LocalShapes
 import com.example.challengme.ui.res.values.LocalSpacing
@@ -214,7 +214,7 @@ fun RegisterScreen(navController: NavController) {
                     isLoading    = true
                     errorMessage = null
                     try {
-                        AuthRepository.shared.register(
+                        AuthService.shared.register(
                             email         = email.trim(),
                             password      = password,
                             nombreUsuario = username.trim()

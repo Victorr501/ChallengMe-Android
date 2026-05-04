@@ -1,13 +1,4 @@
-package com.example.challengme.data.remote.api
-
-// ============================================================
-//  ApiConfig.kt
-//  ChallengMe
-//
-//  Configuración central del servidor.
-//  Los secretos (SecretKey, TenantId, ClientId, ClientSecret)
-//  viven SOLO en el backend — nunca se envían al cliente.
-// ============================================================
+package com.example.challengme.data.remote.dto.API.constant
 
 import okhttp3.HttpUrl
 import okhttp3.HttpUrl.Companion.toHttpUrl
@@ -42,21 +33,6 @@ object ApiConfig {
         const val CONTAINER_NAME = "evidencias"
     }
 
-    // ── Endpoints ────────────────────────────────────────────
-    object Endpoint {
-
-        // Auth
-        const val AUTH_LOGIN_EMAIL = "/auth/login-email"
-        const val AUTH_REGISTRO    = "/auth/registro"
-        const val AUTH_REFRESH     = "/auth/refresh"
-        const val AUTH_LOGOUT      = "/auth/logout"
-
-        // Ranking
-        const val LEADERBOARD = "/leaderboard"
-
-        // Evidencias — ruta dinámica por reto
-        fun evidence(challengeId: String) = "/challenges/$challengeId/evidence"
-    }
 
     // ── Constructor de URL ────────────────────────────────────
     // Construye una HttpUrl de OkHttp concatenando BASE_URL + path.

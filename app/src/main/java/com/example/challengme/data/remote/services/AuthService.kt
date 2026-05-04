@@ -1,4 +1,4 @@
-package com.example.challengme.data.remote.repository
+package com.example.challengme.data.remote.services
 
 // ============================================================
 //  AuthRepository.kt
@@ -11,28 +11,28 @@ package com.example.challengme.data.remote.repository
 
 import com.example.challengme.data.local.AuthManager
 import com.example.challengme.data.remote.api.ApiClient
-import com.example.challengme.data.remote.api.ApiConfig
-import com.example.challengme.data.remote.dto.auth.AuthResponse
-import com.example.challengme.data.remote.dto.auth.LoginRequest
-import com.example.challengme.data.remote.dto.auth.RegisterRequest
+import com.example.challengme.data.remote.dto.API.constant.EndpointConstant
+import com.example.challengme.data.remote.dto.auth.shipment.AuthShipment
+import com.example.challengme.data.remote.dto.auth.request.LoginRequest
+import com.example.challengme.data.remote.dto.auth.request.RegisterRequest
 
-class AuthRepository private constructor(
+class AuthService private constructor(
     private val apiClient:   ApiClient,
     private val authManager: AuthManager
 ) {
 
     // ── Singleton ────────────────────────────────────────────
     companion object {
-        val shared: AuthRepository by lazy {
-            AuthRepository(ApiClient.shared, AuthManager.shared)
+        val shared: AuthService by lazy {
+            AuthService(ApiClient.shared, AuthManager.shared)
         }
     }
 
     // ── Login con correo y contraseña ─────────────────────────
     // Lanza ApiError si el servidor devuelve un error.
-    suspend fun loginEmail(email: String, password: String): AuthResponse {
-        val response = apiClient.send<AuthResponse>(
-            path   = ApiConfig.Endpoint.AUTH_LOGIN_EMAIL,
+    suspend fun loginEmail(email: String, password: String): AuthShipment {
+        val response = apiClient.send<AuthShipment>(
+            path   = EndpointConstant.Endpoint.AUTH_LOGIN_EMAIL,
             method = "POST",
             body   = LoginRequest(email = email, password = password)
         )
@@ -46,9 +46,9 @@ class AuthRepository private constructor(
         email:         String,
         password:      String,
         nombreUsuario: String
-    ): AuthResponse {
-        val response = apiClient.send<AuthResponse>(
-            path   = ApiConfig.Endpoint.AUTH_REGISTRO,
+    ): AuthShipment {
+        val response = apiClient.send<AuthShipment>(
+            path   = EndpointConstant.Endpoint.AUTH_REGISTRO,
             method = "POST",
             body   = RegisterRequest(
                 email         = email,
@@ -64,7 +64,7 @@ class AuthRepository private constructor(
     // Notifica al servidor (ignorando errores) y limpia el token local.
     suspend fun logout() {
         try {
-            apiClient.sendVoid(ApiConfig.Endpoint.AUTH_LOGOUT, "POST")
+            apiClient.sendVoid(EndpointConstant.Endpoint.AUTH_LOGOUT, "POST")
         } catch (_: Exception) {
             // El servidor puede estar caído o el token ya expirado;
             // en cualquier caso limpiamos la sesión local.
