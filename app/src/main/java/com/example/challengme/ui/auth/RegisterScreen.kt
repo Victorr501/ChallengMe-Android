@@ -43,7 +43,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.challengme.data.services.AuthService
-import com.example.challengme.res.navigation.AuthRoutes
+import com.example.challengme.data.remote.dto.routes.constant.AuthRoutes
 import com.example.challengme.ui.res.values.LocalShapes
 import com.example.challengme.ui.res.values.LocalSpacing
 import kotlinx.coroutines.launch

@@ -24,7 +24,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.challengme.res.navigation.AuthRoutes
+import com.example.challengme.data.remote.dto.routes.constant.AuthRoutes
 import com.example.challengme.ui.res.values.LocalShapes
 import com.example.challengme.ui.res.values.LocalSpacing
 
