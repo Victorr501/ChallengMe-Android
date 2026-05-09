@@ -11,9 +11,11 @@ package com.example.challengme.data.services
 
 import com.example.challengme.data.local.AuthManager
 import com.example.challengme.data.remote.api.ApiClient
+import com.example.challengme.data.remote.api.ApiError
 import com.example.challengme.data.remote.dto.API.constant.EndpointConstant
 import com.example.challengme.data.remote.dto.auth.shipment.AuthShipment
 import com.example.challengme.data.remote.dto.auth.request.LoginRequest
+import com.example.challengme.data.remote.dto.auth.request.RecuperarPasswordRequest
 import com.example.challengme.data.remote.dto.auth.request.RegisterRequest
 
 class AuthService private constructor(
@@ -58,6 +60,21 @@ class AuthService private constructor(
         )
         authManager.setToken(response.token)
         return response
+    }
+
+    // ── Recuperar contraseña ──────────────────────────────────
+    // Lanza Exception con mensaje amigable si el servidor falla (5xx).
+    // El servidor devuelve 200 aunque el email no exista (user enumeration prevention).
+    suspend fun recuperarPassword(email: String) {
+        try {
+            apiClient.sendVoid(
+                path   = EndpointConstant.Endpoint.AUTH_RECUPERAR_PASSWORD,
+                method = "POST",
+                body   = RecuperarPasswordRequest(email = email)
+            )
+        } catch (e: ApiError.ServerError) {
+            throw Exception("Error del servidor. Inténtalo más tarde.")
+        }
     }
 
     // ── Cerrar sesión ─────────────────────────────────────────

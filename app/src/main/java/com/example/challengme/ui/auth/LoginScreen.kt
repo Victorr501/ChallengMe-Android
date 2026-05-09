@@ -146,7 +146,7 @@ fun LoginScreen(navController: NavController) {
             color    = colors.primary,
             modifier = Modifier
                 .align(Alignment.End)
-                .clickable { }
+                .clickable { navController.navigate(AuthRoutes.RECUPERAR_PASSWORD) }
         )
 
         Spacer(modifier = Modifier.height(spacing.xl))
