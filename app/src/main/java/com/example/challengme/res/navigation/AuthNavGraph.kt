@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.challengme.data.remote.dto.routes.constant.AuthRoutes
 import com.example.challengme.ui.auth.LoginScreen
+import com.example.challengme.ui.auth.RecuperarPasswordScreen
 import com.example.challengme.ui.auth.RegisterScreen
 import com.example.challengme.ui.auth.WelcomeScreen
 
@@ -25,6 +26,9 @@ fun AuthNavGraph(navController: NavHostController = rememberNavController()) {
         }
         composable(AuthRoutes.REGISTER) {
             RegisterScreen(navController)
+        }
+        composable(AuthRoutes.RECUPERAR_PASSWORD) {
+            RecuperarPasswordScreen(navController)
         }
     }
 }
